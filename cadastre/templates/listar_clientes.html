@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Listar</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static "clientes/css/style.css" %}">
+</head>
+<body>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome:</th>
+            <th>CPF</th>
+            <th>endereço:</th>
+            <th>Tipo</th>
+            
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in clientes %}
+       <tr>
+           <td><a href="{% url 'listar_clientes_id' i.id %}">{{i.nome}}</a></td>
+           <td>{{i.cpf}}</td>
+           <td>{{i.endereco}}</td>
+           <td>{{i.tipo}}</td>
+           <td>
+               <a href="{% url 'editar_cliente' i.id %}">Editar</a>
+               <a href="{% url 'remover_cliente' i.id %}">Remover</a>
+           </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>
